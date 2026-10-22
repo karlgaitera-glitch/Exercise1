@@ -1,4 +1,6 @@
 package bank;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Represents a bank account that supports deposits, withdrawals, and freezing.
@@ -6,10 +8,12 @@ package bank;
 public class BankAccount {
     private double balance;
     private boolean isFrozen;
+    private final List<Transaction> transactionHistory;
 
     public BankAccount() {
         this.balance = 0;
         this.isFrozen = false;
+        this.transactionHistory = new ArrayList<>();
     }
 
     /**
@@ -31,6 +35,7 @@ public class BankAccount {
         }
 
         balance += amount;
+        transactionHistory.add(new Transaction("Deposit", amount));
         System.out.printf("Current Balance: %.2f%n", balance);
     }
 
@@ -59,6 +64,7 @@ public class BankAccount {
         }
 
         balance -= amount;
+        transactionHistory.add(new Transaction("Withdraw", amount));
         System.out.printf("Current Balance: %.2f%n", balance);
     }
 
@@ -78,5 +84,9 @@ public class BankAccount {
 
     public boolean isFrozen() {
         return isFrozen;
+    }
+
+    public List<Transaction> getTransactionHistory() {
+        return new ArrayList<>(transactionHistory);
     }
 }
