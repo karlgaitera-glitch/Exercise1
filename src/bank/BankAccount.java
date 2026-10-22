@@ -1,5 +1,8 @@
 package bank;
 
+/**
+ * Represents a bank account that supports deposits, withdrawals, and freezing.
+ */
 public class BankAccount {
     private double balance;
     private boolean isFrozen;
@@ -9,6 +12,11 @@ public class BankAccount {
         this.isFrozen = false;
     }
 
+    /**
+     * Deposits a positive amount into the account unless it is frozen.
+     *
+     * @param amount the amount to deposit
+     */
     public void deposit(double amount) {
         if (isFrozen()) {
             System.out.println("Account is FROZEN. Unable to transact.");
@@ -26,6 +34,11 @@ public class BankAccount {
         System.out.printf("Current Balance: %.2f%n", balance);
     }
 
+    /**
+     * Withdraws a positive amount from the account unless it is frozen.
+     *
+     * @param amount the amount to withdraw
+     */
     public void withdraw(double amount) {
         if (isFrozen()) {
             System.out.println("Account is FROZEN. Unable to transact.");

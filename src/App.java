@@ -1,7 +1,17 @@
 import bank.BankAccount;
 import bank.SavingsAccount;
 
+/**
+ * Demonstrates bank account operations.
+ */
 public class App {
+
+    /**
+     * Runs the bank account demonstration.
+     *
+     * @param args command-line arguments
+     * @throws Exception if a bank account operation fails
+     */
     public static void main(String[] args) throws Exception {
 
         // Test 1
