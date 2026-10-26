@@ -80,6 +80,10 @@ public class App {
         System.out.println("\nTest 5:");
         accM1.listAccounts();
         
+        //Exercise3
+        //Test 1
+        System.out.println("\n\nTest 1:");
+        account.deposit(-500);
 
     }
 }

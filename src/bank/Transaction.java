@@ -23,4 +23,12 @@ public class Transaction {
             + ", time_stamp=" + timeStamp
             + "]";
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
 }
