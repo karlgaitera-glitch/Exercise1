@@ -1,4 +1,5 @@
 import bank.BankAccount;
+import bank.BankAccountManager;
 import bank.SavingsAccount;
 
 /**
@@ -13,7 +14,7 @@ public class App {
      * @throws Exception if a bank account operation fails
      */
     public static void main(String[] args) throws Exception {
-
+        // Exercise 1
         // Test 1
         System.out.println("Test 1:");
         BankAccount account = new SavingsAccount("Test0");
@@ -56,5 +57,29 @@ public class App {
         System.out.println("\nTest 10:");
         account.unfreezeAccount();
         account.withdraw(100);
+
+        //Exercise2
+        //Test 1
+        System.out.println("\n\nTest 1:");
+        System.out.println("Transaction history:");
+        System.out.println(account.getTransactionHistory());
+
+        //Test 2
+        System.out.println("\nTest 2:");
+        BankAccountManager accM1 = new BankAccountManager();
+
+        //Test 3
+        System.out.println("\nTest 3:");
+        accM1.addAccount(account);
+
+        //Test 4
+        System.out.println("\nTest 4:");
+        accM1.addAccount(new SavingsAccount("Test1"));
+
+        //Test 5
+        System.out.println("\nTest 5:");
+        accM1.listAccounts();
+        
+
     }
 }
