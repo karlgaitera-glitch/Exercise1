@@ -1,6 +1,7 @@
 package bank;
-import java.util.List;
+
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents a bank account that supports deposits, withdrawals, and freezing.
@@ -10,6 +11,9 @@ public class BankAccount {
     private boolean isFrozen;
     private final List<Transaction> transactionHistory;
 
+    /**
+     * Creates an account with a zero balance.
+     */
     public BankAccount() {
         this.balance = 0;
         this.isFrozen = false;
