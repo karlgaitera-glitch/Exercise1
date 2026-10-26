@@ -7,8 +7,8 @@ import java.util.Map;
  * Manages bank accounts and provides lookup by account ID.
  */
 public class BankAccountManager implements Bank {
-    Map<Integer, BankAccount> accounts;
-    int id;
+    private Map<Integer, BankAccount> accounts;
+    private int id;
 
     public BankAccountManager() {
         this.accounts = new HashMap<>();
