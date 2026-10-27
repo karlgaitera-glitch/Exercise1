@@ -77,7 +77,23 @@ public class BankAccountManager implements Bank {
     public List<Transaction> sortTransactionsByAmount(
             List<Transaction> txList) {
         return txList.stream()
-                .sorted((first, second) -> Double.compare(first.getAmount(), second.getAmount()))
+                .sorted((first, second) -> Double.compare(first.getAmount(),
+                        second.getAmount()))
                 .toList();
+    }
+
+    public void printFilteredTransactions(
+            double minimumAmount, List<Transaction> transactions) {
+        System.out.println(
+                "Filtering transactions at or above " + minimumAmount + "...");
+        filterTransactionsAtOrAbove(minimumAmount, transactions)
+                .forEach(System.out::println);
+    }
+
+    public void printTransactionsSortedByAmount(
+            List<Transaction> transactions) {
+        System.out.println("Sorting transactions by amount...");
+        sortTransactionsByAmount(transactions)
+                .forEach(System.out::println);
     }
 }

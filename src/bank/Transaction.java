@@ -1,6 +1,7 @@
 package bank;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * Represents a bank transaction, including its type, amount, and timestamp.
@@ -13,7 +14,7 @@ public class Transaction {
     /**
      * Creates a transaction with the given type and amount.
      *
-     * @param type the transaction type
+     * @param type   the transaction type
      * @param amount the transaction amount
      */
     public Transaction(String type, double amount) {
@@ -25,9 +26,10 @@ public class Transaction {
     @Override
     public String toString() {
         return "Transaction [type=" + type
-            + ", amount=" + amount
-            + ", time_stamp=" + timeStamp
-            + "]";
+                + ", amount=" + String.format("%.2f", amount)
+                + ", time_stamp="
+                + timeStamp.format(DateTimeFormatter.ofPattern("hh:mm:ss"))
+                + "]";
     }
 
     public String getType() {
