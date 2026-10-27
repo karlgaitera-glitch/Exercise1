@@ -10,6 +10,12 @@ public class Transaction {
     private double amount;
     private LocalDateTime timeStamp;
 
+    /**
+     * Creates a transaction with the given type and amount.
+     *
+     * @param type the transaction type
+     * @param amount the transaction amount
+     */
     public Transaction(String type, double amount) {
         this.type = type;
         this.amount = amount;
@@ -22,5 +28,13 @@ public class Transaction {
             + ", amount=" + amount
             + ", time_stamp=" + timeStamp
             + "]";
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public double getAmount() {
+        return amount;
     }
 }
