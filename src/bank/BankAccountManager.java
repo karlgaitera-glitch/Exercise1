@@ -8,6 +8,7 @@ import java.util.Map;
  * Manages bank accounts and provides lookup by account ID.
  */
 public class BankAccountManager implements Bank {
+    private static final int MAX_ACCOUNTS = 100;
     private Map<Integer, BankAccount> accounts;
     private int id;
 
@@ -15,13 +16,19 @@ public class BankAccountManager implements Bank {
         this.accounts = new HashMap<>();
         this.id = 0;
     }
-    
+
     /**
      * Adds an account to the manager.
      *
      * @param account the account to add
      */
     public void addAccount(BankAccount account) {
+        if (accounts.size() >= MAX_ACCOUNTS) {
+            System.out.println("Cannot add account: maximum of " + MAX_ACCOUNTS
+                    + " accounts reached.");
+            return;
+        }
+
         int accountId = id++;
         accounts.put(accountId, account);
         System.out.println("Account added successfully with ID: " + accountId);
@@ -30,7 +37,7 @@ public class BankAccountManager implements Bank {
     public BankAccount getAccount(int id) {
         return accounts.get(id);
     }
-    
+
     /**
      * Lists the accounts managed by this bank.
      */
@@ -38,26 +45,27 @@ public class BankAccountManager implements Bank {
         accounts.forEach((accountId, account) -> {
             if (account instanceof SavingsAccount savingsAccount) {
                 System.out.printf(
-                    "Account ID: %d, Account Name: %s, Balance: %.2f%n",
-                    accountId,
-                    savingsAccount.getOwnerName(),
-                    account.getBalance()
-                );
+                        "Account ID: %d, Account Name: %s, Balance: %.2f%n",
+                        accountId,
+                        savingsAccount.getOwnerName(),
+                        account.getBalance());
             }
         });
     }
 
     /**
-     * Filters transactions with an amount greater than or equal to the given amount.
+     * Filters transactions with an amount greater than or equal to the
+     * given amount.
      *
      * @param amount the minimum transaction amount
      * @param txList the transactions to filter
      * @return transactions at or above the specified amount
      */
-    public List<Transaction> filterTransactionsAtOrAbove(double amount, List<Transaction> txList) {
+    public List<Transaction> filterTransactionsAtOrAbove(double amount,
+            List<Transaction> txList) {
         return txList.stream()
-            .filter(transaction -> transaction.getAmount() >= amount)
-            .toList();
+                .filter(transaction -> transaction.getAmount() >= amount)
+                .toList();
     }
 
     /**
@@ -66,10 +74,10 @@ public class BankAccountManager implements Bank {
      * @param txList the transactions to sort
      * @return transactions sorted by amount
      */
-    public List<Transaction> sortTransactionsByAmount(List<Transaction> txList) {
+    public List<Transaction> sortTransactionsByAmount(
+            List<Transaction> txList) {
         return txList.stream()
-            .sorted((first, second) ->
-                Double.compare(first.getAmount(), second.getAmount()))
-            .toList();
+                .sorted((first, second) -> Double.compare(first.getAmount(), second.getAmount()))
+                .toList();
     }
 }
